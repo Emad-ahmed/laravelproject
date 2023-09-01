@@ -13,23 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('demo');
+Route::get("/{name?}", function($name = null)
+{   
+    $data = compact("name");
+    return view("home")->with($data);
 });
 
 
-Route::get('/demo/{name}/{id?}', function($name, $id = NULL)
+
+Route::get("/category", function()
 {
-   $data = compact("name", "id");
-   return view('demo')->with($data);
+    return view("categories");
 });
 
-Route::get('/contact', function()
-{
-    echo "Contact";
-});
-
-Route::any('/test', function()
-{
-    echo "TRoute In The Post";
-});
