@@ -14,5 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('demo');
+});
+
+
+Route::get('/demo/{name}/{id?}', function($name, $id = NULL)
+{
+   $data = compact("name", "id");
+   return view('demo')->with($data);
+});
+
+Route::get('/contact', function()
+{
+    echo "Contact";
+});
+
+Route::any('/test', function()
+{
+    echo "TRoute In The Post";
 });
